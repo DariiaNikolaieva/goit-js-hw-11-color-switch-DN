@@ -7,22 +7,24 @@ const colors = [
   '#795548',
 ];
 
+const INTERVAL_PERIOD = 1000;
+
 const startBtn = document.querySelector('button[data-action="start"]');
 const stopBtn = document.querySelector('button[data-action="stop"]');
 
-let setColorInterval = null;
+let intervalId = null;
 
 startBtn.addEventListener('click', onStartBtnClick);
 stopBtn.addEventListener('click', onStopBtnClick);
 
 function onStartBtnClick() {
   startBtn.setAttribute('disabled', '');
-  setColorInterval = setInterval(getBgColor, 1000);
+  intervalId = setInterval(getBgColor, INTERVAL_PERIOD);
 }
 
 function onStopBtnClick() {
   startBtn.removeAttribute('disabled', '');
-  clearInterval(setColorInterval);
+  clearInterval(intervalId);
 }
 
 function getBgColor() {
